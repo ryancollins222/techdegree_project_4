@@ -24,16 +24,14 @@ class Phrase {
   checkLetter() {
     let letterButtonDiv = document.querySelector('#qwerty');
     letterButtonDiv.addEventListener('click', (e) => {
-      if (this.phrase.indexOf(e.target.innerText)) {
+      if (this.phrase.indexOf(e.target.innerText) > -1) {
         return true;
       } else {
         return false;
       }
     })
   }
+  showMatchedLetter() {
+    
+  }
 }
-
-let x = new Phrase('JIMMiny jamminy');
-console.log(x);
-x.addPhraseToDisplay();
-x.checkLetter();
