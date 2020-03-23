@@ -15,4 +15,11 @@ class Game {
   getRandomPhrase() {
     return this.phrases[Math.floor(Math.random() * this.phrases.length)];
   }
+  startGame() {
+    document.querySelector('#overlay').style.display = 'none'; 
+    this.activePhrase = this.getRandomPhrase();
+    let phrase = new Phrase(this.activePhrase);
+    phrase.addPhraseToDisplay();
+    phrase.checkLetter();
+  }
 }

@@ -6,7 +6,8 @@ class Phrase {
     this.phrase = phrase.toLowerCase();
   }
   addPhraseToDisplay() {
-    let ul = document.querySelector('#phrase ul');
+    let phraseDiv = document.querySelector('#phrase');
+    let ul = phraseDiv.querySelector('ul');
     for (let i = 0; i< this.phrase.length; i++) {
       let li = document.createElement('li');
       if (this.phrase[i] === ' ') {
@@ -19,6 +20,7 @@ class Phrase {
         li.innerText = `${this.phrase[i]}`;
         ul.appendChild(li);
       }
+      phraseDiv.appendChild(ul);
     }
   }
   checkLetter() {
@@ -31,7 +33,7 @@ class Phrase {
       }
     })
   }
-  showMatchedLetter() {
+  showMatchedLetter() { 
     
   }
 }
