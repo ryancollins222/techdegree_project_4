@@ -23,17 +23,12 @@ class Phrase {
       phraseDiv.appendChild(ul);
     }
   }
-  checkLetter() {
-    let letterButtonDiv = document.querySelector('#qwerty');
-    letterButtonDiv.addEventListener('click', (e) => {
-      if (this.phrase.indexOf(e.target.innerText) > -1) {
-        return true;
-      } else {
-        return false;
-      }
-    })
+  checkLetter(letter) {
+    return this.phrase.includes(letter);
   }
-  showMatchedLetter() { 
-    
+  showMatchedLetter(letter) { 
+    let matches = document.querySelectorAll(`.${letter}`);
+    matches.forEach(match => {match.classList.replace('hide', 'show')})
   }
 }
+
