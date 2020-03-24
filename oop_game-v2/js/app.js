@@ -22,3 +22,12 @@ letterDiv.addEventListener('click', (e) => {
     game.handleInteraction(e.target);
   }
 })
+document.addEventListener('keydown', (e) => {
+  console.log(e.key);
+  let buttons = letterDiv.querySelectorAll('button');
+  buttons.forEach(button => {
+    if (e.key === button.innerText) {
+      game.handleInteraction(button);
+    }
+  })
+})

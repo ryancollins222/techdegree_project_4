@@ -14,9 +14,7 @@ class Phrase {
         li.classList.add('space');
         ul.appendChild(li);
       } else {
-        li.classList.add('hide');
-        li.classList.add('letter');
-        li.classList.add(`${this.phrase[i]}`);
+        li.classList.add('hide', 'letter', `${this.phrase[i]}`);
         li.innerText = `${this.phrase[i]}`;
         ul.appendChild(li);
       }
@@ -31,4 +29,5 @@ class Phrase {
     matches.forEach(match => {match.classList.replace('hide', 'show')})
   }
 }
+
 
