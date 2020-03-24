@@ -18,6 +18,20 @@ class Game {
     return this.phrases[Math.floor(Math.random() * this.phrases.length)];
   }
 
+  handleInteraction(button) {
+    button.disabled = true;
+    if (!this.activePhrase.checkLetter(button.innerText)) {
+      button.classList.add('wrong');
+      game.removeLife();
+    } else {
+      button.classList.add('chosen');
+      this.activePhrase.showMatchedLetter(button.innerText);
+      if (this.checkForWin()) {
+        this.gameOver();
+      }
+    }
+  }
+
   startGame() {
     document.querySelector('#overlay').style.display = 'none'; 
     this.activePhrase = this.getRandomPhrase();
@@ -25,7 +39,9 @@ class Game {
   }
 
   checkForWin() {
-   return !document.querySelector('.hide')
+   if (document.querySelectorAll('.hide').length === 0) {
+     this.gameOver();
+   }
   }
 
   removeLife() {
@@ -35,7 +51,7 @@ class Game {
       if (hearts[i].getAttribute('src') === 'images/liveHeart.png' ) {
         hearts[i].src = 'images/lostHeart.png';
         break;
-      }
+      } 
     }
     if (this.missed === 5) {
       this.gameOver();
@@ -43,6 +59,16 @@ class Game {
   }
 
   gameOver() {
-    document.querySelector('#overlay').style.display = '';
+    let div = document.querySelector('#overlay');
+    let h1 = div.querySelector('h1');
+    div.style.display = '';
+    if (this.missed < 5) {
+      div.className = 'win';
+      h1.innerText = 'You chose wisely!'
+    } else {
+      div.className = 'lose';
+      h1.innerText = 'You lost! Better luck next time!';
+    }
+
   }
 }
