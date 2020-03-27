@@ -28,11 +28,19 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background: linear-gradient(
+    yellow,
+    red
+  );
 }
 
 li, ol, ul {
   padding: 0;
   display: inline-block;
+}
+
+#banner h2 {
+  color: green;
 }
 
 h2 {
